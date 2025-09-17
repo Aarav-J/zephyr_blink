@@ -47,7 +47,7 @@ tar xvf zephyr-sdk-0.17.4_macos-aarch64_minimal.tar.xz # replace the file name a
 ## Setting up environment variables ## 
 These will be ../ as we will be in the project fold(blink in my case) but the necessary files are in the parent folder
 ```bash 
-export ZEPHYR_SDK_INSTALL_DIR=../zephyr-sdk-0.17.4 # replace with sdk folder nam
+export ZEPHYR_SDK_INSTALL_DIR=../zephyr-sdk-0.17.4 # replace with sdk folder name
 export ZEPHYR_BASE = ../zephyrproject/zephyr
 ```
 ## Create a new project folder ## 
@@ -86,6 +86,7 @@ This block of code sets pin 27 as a GPIO output pin which means electricity can 
 ret = gpio_pin_configure(gpio_ct_dev, 27, GPIO_OUTPUT_ACTIVE);
 ```
 
+These are to set the led on and off. All of this was running in a while loop. Each command is being set to variable ret to ensure that no errors are occuring. If a value other than 0 is found in ret, the loop is exited. 
 ``` c
 ret = gpio_pin_set_raw(gpio_ct_dev, 27, 1); // Turn the led on 
 ret = gpio_pin_set_raw(gpio_ct_dev, 27, 0); // Turn the led off
