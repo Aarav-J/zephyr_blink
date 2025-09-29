@@ -1,12 +1,11 @@
-/* boards/esp32_devkitc.overlay */
-&uart0 {
-	current-speed = <115200>;
-	status = "okay";
-};
-
-/* Make sure console uses uart0 (usually already true) */
-&chosen {
-	zephyr,console = &uart0;
-	zephyr,shell-uart = &uart0;
-	zephyr,uart-mcumgr = &uart0;
+/ { 
+	aliases { 
+		led0 = &myled0;
+	}; 
+	leds { 
+		compatible = "gpio-leds"; 
+		myled0: led0 { 
+			gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+		};
+	};
 };
